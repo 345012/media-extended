@@ -1,5 +1,8 @@
 {
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "[typescriptreact]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" },
-  "[typescript]": { "editor.defaultFormatter": "dbaeumer.vscode-eslint" }
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "deepscan.enable": true
 }

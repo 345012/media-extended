@@ -142,6 +142,12 @@ export class MediaNoteIndex extends Component {
       throw new Error("Player not initialized");
     }
     const title = mediaTitle(mediaInfo, { state: player.state });
+    const additionalFields = {
+      标签: ["b站视频"], // 你可以根据需要修改标签
+      评价: null, // 你可以根据需要修改评价
+      rank: null, // 你可以根据需要修改rank
+    };
+
     if (isFileMediaInfo(mediaInfo)) {
       const mediaType = checkMediaType(mediaInfo.file.extension)!;
       const file = mediaInfo.file;
@@ -149,6 +155,7 @@ export class MediaNoteIndex extends Component {
         title,
         fm: (newNotePath) => ({
           [mediaType]: `[[${metadataCache.fileToLinktext(file, newNotePath)}]]`,
+          ...additionalFields,
         }),
         sourcePath: file.path,
       });
@@ -157,6 +164,7 @@ export class MediaNoteIndex extends Component {
       return this.#getNote(mediaInfo, {
         title,
         fm: () => ({ [type]: mediaInfo.jsonState.source }),
+        ...additionalFields,
       });
     }
   }
